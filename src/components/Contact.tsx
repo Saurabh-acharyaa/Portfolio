@@ -10,54 +10,16 @@ const Contact: FC = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: false // Reset when leaving view
+    triggerOnce: false
   });
-
-  const floatingAnimation = {
-    y: [0, -5, 0],
-    transition: {
-      y: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
-  const glowAnimation = {
-    boxShadow: [
-      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-      "0 10px 15px -3px rgba(126, 34, 206, 0.3), 0 4px 6px -2px rgba(126, 34, 206, 0.05)",
-      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-    ],
-    transition: {
-      boxShadow: {
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
+      controls.start({ opacity: 1, y: 0 });
     } else {
-      controls.start("hidden");
+      controls.start({ opacity: 0, y: 20 });
     }
   }, [controls, inView]);
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -91,12 +53,8 @@ const Contact: FC = () => {
       className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-20 text-white"
     >
       <motion.h2 
-        initial="hidden"
+        initial={{ opacity: 0, y: -20 }}
         animate={controls}
-        variants={{
-          hidden: { opacity: 0, y: -20 },
-          visible: { opacity: 1, y: 0 }
-        }}
         transition={{ duration: 0.5 }}
         className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-300"
       >
@@ -105,15 +63,13 @@ const Contact: FC = () => {
 
       {/* Contact Form */}
       <motion.form
-        initial="hidden"
+        initial={{ opacity: 0, y: 20 }}
         animate={controls}
-        variants={cardVariants}
-        whileInView={floatingAnimation}
-        viewport={{ margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         onSubmit={handleSubmit}
         className="max-w-xl mx-auto p-6 bg-gray-800 rounded-2xl shadow-lg border border-gray-700 space-y-4"
       >
-        <motion.div animate={inView ? glowAnimation : {}}>
+        <div>
           <input
             type="text"
             name="name"
@@ -165,15 +121,14 @@ const Contact: FC = () => {
               ❌ Something went wrong. Please try again.
             </motion.p>
           )}
-        </motion.div>
+        </div>
       </motion.form>
 
       {/* Social Links */}
       <motion.div 
-        initial="hidden"
+        initial={{ opacity: 0, y: 20 }}
         animate={controls}
-        variants={cardVariants}
-        transition={{ delay: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         className="flex justify-center gap-6 mt-10"
       >
         <motion.a
@@ -181,9 +136,7 @@ const Contact: FC = () => {
             scale: 1.05,
             y: -3
           }}
-          whileInView={floatingAnimation}
-          viewport={{ margin: "-100px" }}
-          href="https://github.com/your-github-username"
+          href="https://github.com/Saurabh-acharyaa"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-800 border border-gray-700 shadow-md hover:shadow-purple-500/30 hover:border-transparent hover:bg-gradient-to-r from-purple-500 to-cyan-400 transition"
@@ -197,8 +150,6 @@ const Contact: FC = () => {
             scale: 1.05,
             y: -3
           }}
-          whileInView={floatingAnimation}
-          viewport={{ margin: "-100px" }}
           href="https://www.linkedin.com/in/saurabh-acharya-3344702b8/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BNgbSn1S2RGCc6pntGPJTxw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
