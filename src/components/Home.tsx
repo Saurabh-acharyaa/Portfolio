@@ -15,7 +15,7 @@ const Home: FC = () => {
         className="flex flex-col items-center"  // Added this wrapper for perfect centering
       >
         <img
-          src="FinalPic.jpg"
+          src="finalPic.jpg"
           alt="Profile Photo"
           className="w-40 h-40 rounded-full shadow-lg mb-4 object-cover border-4 border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 mx-auto"  // Added mx-auto
         />

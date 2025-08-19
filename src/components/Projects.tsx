@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { FaGithub } from "react-icons/fa";  // ✅ GitHub icon
 
 const Projects: FC = () => {
   const controls = useAnimation();
@@ -19,8 +20,12 @@ const Projects: FC = () => {
   }, [controls, inView]);
 
   return (
-    <section id="projects" ref={ref} className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-20 text-white">
-      <motion.h2 
+    <section
+      id="projects"
+      ref={ref}
+      className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-6 py-20 text-white"
+    >
+      <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={controls}
         transition={{ duration: 0.5 }}
@@ -28,8 +33,9 @@ const Projects: FC = () => {
       >
         Projects
       </motion.h2>
-      
+
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* Netflix Clone Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
@@ -38,29 +44,36 @@ const Projects: FC = () => {
             scale: 1.03,
             transition: { duration: 0.2 }
           }}
-          className="p-6 bg-gray-800 rounded-2xl shadow-lg border border-gray-700 hover:border-transparent hover:bg-gradient-to-br from-purple-600/20 to-cyan-600/20"
+          className="p-6 bg-gray-900 rounded-2xl shadow-lg border border-gray-700 hover:border-transparent hover:bg-gradient-to-br from-purple-600/20 to-cyan-600/20"
         >
           <div>
             <h3 className="text-xl font-bold text-white">Netflix Clone</h3>
+            {/* ✅ Project Image */}
+            <img
+              src="netflix.jpg"
+              alt="Netflix Clone"
+              className="mt-3 rounded-lg shadow-md"
+            />
             <p className="mt-2 text-gray-300">
-              A Netflix-inspired web application with movie browsing, user authentication,
-              and responsive design.
+              A Netflix-inspired web application with movie browsing, user
+              authentication, and responsive design.
             </p>
             <div className="mt-4">
-              <motion.a 
+              <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://github.com/Saurabh-acharyaa/Netflix_clone" 
+                href="https://github.com/Saurabh-acharyaa/Netflix_clone"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 hover:text-cyan-300 transition-colors duration-300"
+                className="inline-flex items-center text-purple-400 hover:text-cyan-300 transition-colors duration-300"
               >
-                GitHub
+                <FaGithub size={22} /> {/* ✅ GitHub icon */}
               </motion.a>
             </div>
           </div>
         </motion.div>
 
+        {/* Online Appointment System Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
@@ -69,24 +82,30 @@ const Projects: FC = () => {
             scale: 1.03,
             transition: { duration: 0.2 }
           }}
-          className="p-6 bg-gray-800 rounded-2xl shadow-lg border border-gray-700 hover:border-transparent hover:bg-gradient-to-br from-purple-600/20 to-cyan-600/20"
+          className="p-6 bg-gray-900 rounded-2xl shadow-lg border border-gray-700 hover:border-transparent hover:bg-gradient-to-br from-purple-600/20 to-cyan-600/20"
         >
           <div>
             <h3 className="text-xl font-bold text-white">Online Appointment System</h3>
+            {/* ✅ Project Image */}
+            <img
+              src="online.jpg"
+              alt="Online Appointment System"
+              className="mt-3 rounded-lg shadow-md"
+            />
             <p className="mt-2 text-gray-300">
-              A web-based appointment booking system with admin panel, user management,
-              and scheduling features.
+              A web-based appointment booking system with admin panel, user
+              management, and scheduling features.
             </p>
             <div className="mt-4">
-              <motion.a 
+              <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://github.com/Saurabh-acharyaa/online_appointment" 
+                href="https://github.com/Saurabh-acharyaa/online_appointment"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-purple-400 hover:text-cyan-300 transition-colors duration-300"
+                className="inline-flex items-center text-purple-400 hover:text-cyan-300 transition-colors duration-300"
               >
-                GitHub
+                <FaGithub size={22} /> {/* ✅ GitHub icon */}
               </motion.a>
             </div>
           </div>
