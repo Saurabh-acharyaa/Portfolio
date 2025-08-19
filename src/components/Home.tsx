@@ -6,7 +6,7 @@ const Home: FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gray-900 to-gray-800 px-6 pt-20"
+      className="h-[80vh] flex flex-col items-center justify-center text-center bg-gradient-to-br from-gray-900 to-gray-800 px-6 pt-20"
     >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
